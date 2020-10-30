@@ -21,8 +21,9 @@
         if(manoAjax.readyState === 4){
             if(manoAjax.status === 200){
                let orai = JSON.parse(manoAjax.responseText);
-               console.log(orai);
                createTable(orai);
+              // console.log(document.querySelector('#place').value);
+               document.querySelector('#place').value = ''
             }else{
                 alert(manoAjax.statusText);
             } 
@@ -38,12 +39,8 @@
            if(option.value == inputValue) location = option.id;
        });
        let path = 'https://api.meteo.lt/v1/places/' + location + '/forecasts/long-term'
-       console.log(path);
        manoAjax.open('GET', path);
        manoAjax.send();
-       xhr.open('GET', 'https://api.meteo.lt/v1/places');
-       xhr.send();
-
       }
 
       function createTable (orai) {
